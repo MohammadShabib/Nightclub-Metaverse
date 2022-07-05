@@ -11,8 +11,13 @@ import {
 
 export default (props) => {
     return (
-        <MDBFooter className="text-center" color="white" bgColor="dark">
-            <MDBContainer className="p-4">
+        <MDBFooter
+            className="text-center"
+            color="white"
+            bgColor="dark"
+            fixed="bottom"
+        >
+            <MDBContainer className="p-4 my-5">
                 <section className="mb-4">
                     <a
                         className="btn btn-outline-light btn-floating m-1"

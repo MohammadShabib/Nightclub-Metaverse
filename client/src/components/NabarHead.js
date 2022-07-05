@@ -1,13 +1,41 @@
 import { Container, Navbar, Nav, Button, NavDropdown } from "react-bootstrap";
 
+import { useState, useEffect } from "react";
+
+import SignupModal from "./SignupModal";
+import SigninModal from "./SigninModal";
+import auth from "./auth";
+
 const NabarHead = (props) => {
+    const [showSigninModal, setShowSigninModal] = useState(false);
+    const [showSignupModal, setShowSignupModal] = useState(false);
+    const [loggedin, setLoggedin] = useState(false);
+    const [UserId, setUserID] = useState();
+    const singupButtonHandler = () => {
+        setShowSignupModal(true);
+    };
+    const singinButtonHandler = () => {
+        setShowSigninModal(true);
+    };
+    useEffect(() => {
+        const userId = auth();
+        if (userId) {
+            setLoggedin(true);
+
+            setUserID(userId);
+        }
+    }, []);
     return (
         <>
-            <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+            <Navbar
+                fixed="top"
+                collapseOnSelect
+                expand="lg"
+                bg="dark"
+                variant="dark"
+            >
                 <Container>
-                    <Navbar.Brand href="#home">
-                        Metaverse Night Club
-                    </Navbar.Brand>
+                    <Navbar.Brand href="/">Metaverse Night Club</Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="me-auto">
@@ -33,16 +61,61 @@ const NabarHead = (props) => {
                             </NavDropdown>
                         </Nav>
                         <Nav>
-                            <Button variant="primary" className="me-1">
-                                Sign in
-                            </Button>
-                            <Button variant="primary" className="me-1">
-                                Sign Up
-                            </Button>
+                            {!loggedin && (
+                                <>
+                                    <Button
+                                        variant="primary"
+                                        className="me-1"
+                                        onClick={singupButtonHandler}
+                                    >
+                                        Sign up
+                                    </Button>
+
+                                    <Button
+                                        variant="primary"
+                                        className="me-1"
+                                        onClick={singinButtonHandler}
+                                    >
+                                        Sign in
+                                    </Button>
+                                </>
+                            )}
+                            {loggedin && (
+                                <NavDropdown
+                                    title="Account"
+                                    id="collasible-nav-dropdown"
+                                >
+                                    <NavDropdown.Item href={`/user/${UserId}`}>
+                                        Edit Profile
+                                    </NavDropdown.Item>
+                                    <NavDropdown.Item href="#action/3.1">
+                                        Support
+                                    </NavDropdown.Item>
+
+                                    <NavDropdown.Divider />
+                                    <NavDropdown.Item href="/logout">
+                                        Log out
+                                    </NavDropdown.Item>
+                                </NavDropdown>
+                            )}
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
+
+            {showSignupModal && (
+                <SignupModal
+                    show={showSignupModal}
+                    setShow={setShowSignupModal}
+                />
+            )}
+
+            {showSigninModal && (
+                <SigninModal
+                    show={showSigninModal}
+                    setShow={setShowSigninModal}
+                />
+            )}
         </>
     );
 };
