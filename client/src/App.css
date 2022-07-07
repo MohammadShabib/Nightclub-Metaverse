@@ -49,3 +49,6 @@
 .btn {
     text-transform: none;
 }
+.mask {
+    position: inherit;
+}

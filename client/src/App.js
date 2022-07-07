@@ -4,32 +4,40 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import Home from "./views/Home";
-import UserProfile from "./views/UserProfile";
-import Logout from "./components/Logout";
-import NabarHead from "./components/NabarHead";
-import Footer from "./components/Footer";
+import Home from "./pages/Home";
+import UserProfile from "./pages/UserProfile";
+import NabarHead from "./components/organism/NabarHead";
+import Footer from "./components/atoms/AtomFooter";
+
+import { LoginProvider } from "./context/ContextLogin";
+
+import Authenticate from "./utilities/Authenticate";
 
 function App() {
     return (
         <BrowserRouter>
-            <div className="App">
-                <div className="container-fluid p-0">
-                    <div className="row">
-                        <NabarHead />
-                    </div>
-                    <div className="row">
-                        <Routes>
-                            <Route path="/user/:id" element={<UserProfile />} />
-                            <Route path="/logout" element={<Logout />} />
-                            <Route path="/" element={<Home />} />
-                        </Routes>
+            <LoginProvider>
+                <div className="App">
+                    <div className="container-fluid p-0">
+                        <div className="row">
+                            <NabarHead />
+                        </div>
+                        <div className="row">
+                            <Routes>
+                                <Route
+                                    path="/user/:id"
+                                    element={<UserProfile />}
+                                />
+
+                                <Route path="/" element={<Home />} />
+                            </Routes>
+                        </div>
+                        <div className="row">
+                            <Footer />
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div className="row">
-                <Footer />
-            </div>
+            </LoginProvider>
         </BrowserRouter>
     );
 }

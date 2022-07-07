@@ -1,6 +1,6 @@
 import { Parallax } from "react-parallax";
 
-import joinUsBackground from "../assets/joinUsBackground.jpg";
+import joinUsBackground from "../../assets/joinUsBackground.jpg";
 
 export default () => {
     return (

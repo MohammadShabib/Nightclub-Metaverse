@@ -1,34 +1,30 @@
 import { useState } from "react";
 import { Modal, Button, Form } from "react-bootstrap";
-import axios from "axios";
 
-export default (props) => {
-    const { show, setShow } = props;
+import User from "../../services/User.service";
+
+import { useLogin } from "../../context/ContextLogin";
+
+export default ({ handleClose }) => {
     const [email, setEmail] = useState("test@gmail.com");
     const [password, setPassword] = useState("pass123@");
+    const { login } = useLogin();
 
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
-    const FormSubmitHandler = (e) => {
+    const FormSubmitHandler = async (e) => {
         e.preventDefault();
-        axios
-            .post(
-                "http://localhost:8000/api/user/login",
-                {
-                    email,
-                    password,
-                },
-                { withCredentials: true }
-            )
-            .then((res) => {
-                handleClose();
-                window.location.href = "/";
-            })
-            .catch((err) => console.log(err));
+        const user = new User({
+            email,
+            password,
+        });
+        const res = await user.signin();
+        if (res) {
+            login();
+            handleClose();
+        }
     };
 
     return (
-        <Modal className="modal-dark-theme" show={show} onHide={handleClose}>
+        <Modal className="modal-dark-theme" show={true} onHide={handleClose}>
             <Modal.Header closeButton>
                 <Modal.Title>Sign In</Modal.Title>
             </Modal.Header>
