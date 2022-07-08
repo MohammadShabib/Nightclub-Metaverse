@@ -7,11 +7,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import UserProfile from "./pages/UserProfile";
 import NabarHead from "./components/organism/NabarHead";
-import Footer from "./components/atoms/AtomFooter";
+import Footer from "./components/atoms/Footer.Atom";
 
-import { LoginProvider } from "./context/ContextLogin";
-
-import Authenticate from "./utilities/Authenticate";
+import { LoginProvider } from "./context/Login.Context";
 
 function App() {
     return (

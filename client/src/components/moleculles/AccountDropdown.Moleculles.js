@@ -1,10 +1,13 @@
 import { NavDropdown } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
-import { useLogin } from "../../context/ContextLogin";
+import { useLogin } from "../../context/Login.Context";
 import User from "../../services/User.service";
-
-const AtomAccountDropdown = () => {
+/**
+ *
+ * @returns the account dropdown menu
+ */
+const AccountDropdown = () => {
     const navigate = useNavigate();
     const { user, logout } = useLogin();
 
@@ -29,4 +32,4 @@ const AtomAccountDropdown = () => {
     );
 };
 
-export default AtomAccountDropdown;
+export default AccountDropdown;

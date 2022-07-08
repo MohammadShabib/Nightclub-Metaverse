@@ -8,8 +8,10 @@ import {
     MDBRow,
     MDBBtn,
 } from "mdb-react-ui-kit";
-
-export default (props) => {
+/**
+ * Footer for the website
+ */
+const Footer = () => {
     return (
         <MDBFooter
             className="text-center"
@@ -234,3 +236,5 @@ export default (props) => {
         </MDBFooter>
     );
 };
+
+export default Footer;

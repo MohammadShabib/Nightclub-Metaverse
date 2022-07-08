@@ -3,15 +3,14 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 require("dotenv").config();
 
-module.exports.getAllUsers = (req, res) => {
-    User.find({})
-        .then((users) => res.json(users))
-        .catch((err) => console.log(err));
-};
+// module.exports.getAllUsers = (req, res) => {
+//     User.find({})
+//         .then((users) => res.json(users))
+//         .catch((err) => console.log(err));
+// };
 
 module.exports.register = (req, res) => {
     const { firstName, lastName, email, password } = req.body;
-    console.log(req.body);
 
     User.create({ firstName, lastName, email, password })
         .then((user) => {
@@ -48,7 +47,7 @@ module.exports.login = (req, res) => {
             });
         })
         .catch((err) => {
-            console.log("erx", err);
+            console.log("error", err);
             res.json(err);
         });
 };

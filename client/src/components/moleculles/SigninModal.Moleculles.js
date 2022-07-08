@@ -1,11 +1,16 @@
 import { useState } from "react";
 import { Modal, Button, Form } from "react-bootstrap";
-
+import protoTypes from "prop-types";
 import User from "../../services/User.service";
 
-import { useLogin } from "../../context/ContextLogin";
+import { useLogin } from "../../context/Login.Context";
 
-export default ({ handleClose }) => {
+/**
+ *
+ * @param {function} param0 - handel closing the modal
+ * @returns - a singin modal
+ */
+const SigninModal = ({ handleClose }) => {
     const [email, setEmail] = useState("test@gmail.com");
     const [password, setPassword] = useState("pass123@");
     const { login } = useLogin();
@@ -58,3 +63,9 @@ export default ({ handleClose }) => {
         </Modal>
     );
 };
+
+SigninModal.prototype = {
+    handleClose: protoTypes.func,
+};
+
+export default SigninModal;

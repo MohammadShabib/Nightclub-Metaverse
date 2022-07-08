@@ -1,3 +1,13 @@
+import protoType from "prop-types";
+
+/**
+ * react element which shows the user info
+ * @param {Object} param0
+ * @param {string} param0.firstName - the user firstname
+ * @param {string} param0.lastName - the user lastname
+ * @param {string} param0.email - the user email
+ *
+ */
 const UserProfileInfo = ({ firstName, lastName, email }) => {
     return (
         <div className="card h-100">
@@ -29,4 +39,9 @@ const UserProfileInfo = ({ firstName, lastName, email }) => {
     );
 };
 
+UserProfileInfo.prototype = {
+    firstName: protoType.string,
+    lastName: protoType.string,
+    email: protoType.string,
+};
 export default UserProfileInfo;

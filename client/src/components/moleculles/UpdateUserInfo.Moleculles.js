@@ -1,7 +1,19 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+import propTypes from "prop-types";
+
 import User from "../../services/User.service";
-const MolecullesUpdateUserInfo = (props) => {
+/**
+ *
+ * react element to update user info
+ * @param {Object} props - contains user info
+ * @param {string} props.firstName - the user firstname
+ * @param {string} props.lastName - the user lastname
+ * @param {string} props.email - the user email
+ * @param {string} props.email - the user password
+ *
+ */
+const UpdateUserInfo = (props) => {
     const id = props.id;
     const [firstName, setFirstName] = useState(props.firstName);
     const [lastName, setLastName] = useState(props.lastName);
@@ -145,4 +157,11 @@ const MolecullesUpdateUserInfo = (props) => {
     );
 };
 
-export default MolecullesUpdateUserInfo;
+UpdateUserInfo.prototype = {
+    firstName: propTypes.string,
+    lastName: propTypes.string,
+    email: propTypes.string,
+    lotalty: propTypes.string,
+    membership: propTypes.string,
+};
+export default UpdateUserInfo;

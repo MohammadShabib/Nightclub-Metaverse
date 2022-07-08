@@ -1,6 +1,14 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
-
+/**
+ * @typedef {Object} User
+ * @property {string} firstName
+ * @property {string} lastName
+ * @property {string} email
+ * @property {string} password - hash of the password
+ *
+ * @pre {function} hashPass - hash the password
+ */
 const UserSchema = new mongoose.Schema({
     firstName: {
         type: String,
@@ -31,7 +39,8 @@ const UserSchema = new mongoose.Schema({
     },
 });
 
-UserSchema.pre("save", function (next) {
+/** save the hash of the password instead of the password planit txt */
+UserSchema.pre("save", function hashPass(next) {
     bcrypt.hash(this.password, 10).then((hash) => {
         this.password = hash;
         next();

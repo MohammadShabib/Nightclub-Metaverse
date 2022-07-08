@@ -1,11 +1,15 @@
 import { Container, Navbar, Nav } from "react-bootstrap";
-import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import SignInUpGroup from "./SignInUpGroup";
-import AtomAccountDropdown from "../moleculles/MolecullesAccountDropdown";
+import AccountDropdown from "../moleculles/AccountDropdown.Moleculles";
 
-import { useLogin } from "../../context/ContextLogin";
+import { useLogin } from "../../context/Login.Context";
+
+/**
+ * react element which shows the navbar of the website
+ *
+ */
 const NabarHead = () => {
     const navigate = useNavigate();
     const { user, auth } = useLogin();
@@ -34,7 +38,7 @@ const NabarHead = () => {
                         </Nav>
                         <Nav>
                             {!auth && <SignInUpGroup />}
-                            {auth && <AtomAccountDropdown userId={user} />}
+                            {auth && <AccountDropdown userId={user} />}
                         </Nav>
                     </Navbar.Collapse>
                 </Container>

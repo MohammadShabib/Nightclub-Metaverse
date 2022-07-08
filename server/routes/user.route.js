@@ -12,7 +12,4 @@ router.get("/api/logout", userController.logout);
 router.get("/api/user/:id", userController.getUser);
 router.put("/api/user/:id", userController.updateUser);
 
-//router.get("/api/users", userController.getAllUsers);
-// router.put("/api/user/:id", userController.updateUser);
-
 module.exports = router;

@@ -1,8 +1,11 @@
 import { Button } from "react-bootstrap";
 import { useState, useEffect } from "react";
-import SignupModal from "../moleculles/MolecullesSignupModal";
-import SigninModal from "../moleculles/MolecullesSigninModal";
+import SignupModal from "../moleculles/SignupModal.Moleculles";
+import SigninModal from "../moleculles/SigninModal.Moleculles";
 
+/**
+ * react elment which hold the sign in/up buttons and their modals
+ */
 const SingInUpGroup = () => {
     const [showSigninModal, setShowSigninModal] = useState(false);
     const [showSignupModal, setShowSignupModal] = useState(false);
