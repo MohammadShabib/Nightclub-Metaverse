@@ -11,10 +11,10 @@ import { useLogin } from "../../context/Login.Context";
  * @returns a signup modal
  */
 const SignupModal = ({ handleClose }) => {
-    const [firstName, setFirstName] = useState("ahmad");
-    const [lastName, setLastName] = useState("samer");
-    const [email, setEmail] = useState("test@gmail.com");
-    const [password, setPassword] = useState("pass123@");
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
 
     const { login } = useLogin();
 

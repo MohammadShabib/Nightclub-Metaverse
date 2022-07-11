@@ -12,4 +12,12 @@ app.use(express.json());
 
 app.use(userRoutes);
 
-app.listen(8000, () => console.log("server is running..."));
+const server = app.listen(8000, () => console.log("server is running..."));
+
+const io = require("socket.io")(server, { cors: true });
+
+io.on("connection", (socket) => {
+    socket.on("send-message", (data) => {
+        socket.broadcast.emit("receive-message", data);
+    });
+});

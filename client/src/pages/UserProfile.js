@@ -40,7 +40,7 @@ export default (props) => {
     });
 
     return (
-        <>
+        <div className="row">
             {loaded && (
                 <div className="container mt-5" style={{ margin: "50px 0px" }}>
                     <div className="row gutters px-3 py-3">
@@ -64,6 +64,6 @@ export default (props) => {
                     </div>
                 </div>
             )}
-        </>
+        </div>
     );
 };

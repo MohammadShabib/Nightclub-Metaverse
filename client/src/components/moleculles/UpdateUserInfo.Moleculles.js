@@ -28,7 +28,7 @@ const UpdateUserInfo = (props) => {
         const user = new User({ id, firstName, lastName, email });
         const res = await user.updateInfo();
         if (res) {
-            window.location = location.pathname;
+            navigate(location.pathname);
         }
     };
 

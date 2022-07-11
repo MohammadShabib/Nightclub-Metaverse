@@ -3,18 +3,18 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 require("dotenv").config();
 
-// module.exports.getAllUsers = (req, res) => {
-//     User.find({})
-//         .then((users) => res.json(users))
-//         .catch((err) => console.log(err));
-// };
+const JWT = require("../utilities/JWT");
 
 module.exports.register = (req, res) => {
     const { firstName, lastName, email, password } = req.body;
 
     User.create({ firstName, lastName, email, password })
         .then((user) => {
-            const token = jwt.sign({ id: user._id }, process.env.SECRET_KEY);
+            const token = JWT.createToken({
+                id: user._id,
+                firstName: user.firstName,
+                lastName: user.lastName,
+            });
             res.cookie("usertoken", token).json({
                 msg: "success!",
             });
@@ -40,7 +40,11 @@ module.exports.login = (req, res) => {
             if (!correctPassword) {
                 return res.sendStatus(400);
             }
-            const token = jwt.sign({ id: USER._id }, process.env.SECRET_KEY);
+            const token = JWT.createToken({
+                id: USER._id,
+                firstName: USER.firstName,
+                lastName: USER.lastName,
+            });
 
             res.cookie("usertoken", token).json({
                 msg: "success!",

@@ -1,5 +1,5 @@
 import { Container, Navbar, Nav } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 import SignInUpGroup from "./SignInUpGroup";
 import AccountDropdown from "../moleculles/AccountDropdown.Moleculles";
@@ -17,17 +17,14 @@ const NabarHead = () => {
     return (
         <>
             <Navbar
-                fixed="top"
+                className="sticky-top"
                 collapseOnSelect
                 expand="lg"
                 bg="dark"
                 variant="dark"
             >
                 <Container>
-                    <Navbar.Brand
-                        onClick={() => navigate("/")}
-                        style={{ cursor: "pointer" }}
-                    >
+                    <Navbar.Brand as={Link} to="/">
                         Metaverse Night Club
                     </Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -35,6 +32,9 @@ const NabarHead = () => {
                         <Nav className="me-auto">
                             <Nav.Link href="#features">Features</Nav.Link>
                             <Nav.Link href="#pricing">Pricing</Nav.Link>
+                            <Nav.Link as={Link} to="/chat">
+                                Chat
+                            </Nav.Link>
                         </Nav>
                         <Nav>
                             {!auth && <SignInUpGroup />}

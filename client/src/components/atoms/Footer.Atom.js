@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import {
     MDBFooter,
     MDBContainer,
@@ -12,6 +13,7 @@ import {
  * Footer for the website
  */
 const Footer = () => {
+    const navigate = useNavigate();
     return (
         <MDBFooter
             className="text-center"
@@ -228,10 +230,7 @@ const Footer = () => {
                 className="text-center p-3"
                 style={{ backgroundColor: "rgba(0, 0, 0, 0.2)" }}
             >
-                © 2020 Copyright:{" "}
-                <a className="text-white" href="http://localhost:3000/">
-                    MetverseNightClub.com
-                </a>
+                © 2020 Copyright: <a href="/"> MetverseNightClub.com</a>
             </div>
         </MDBFooter>
     );

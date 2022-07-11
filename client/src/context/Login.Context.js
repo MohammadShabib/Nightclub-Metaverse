@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import Authenticate from "../utilities/Authenticate";
-import User from "../services/User.service";
+
 const LoginContext = React.createContext();
 
 /**
@@ -30,7 +30,14 @@ export const LoginProvider = ({ children }) => {
 
     return (
         <LoginContext.Provider
-            value={{ user: AUTH, auth: AUTH, logout, login }}
+            value={{
+                user: AUTH.id,
+                firstName: AUTH.firstName,
+                lastName: AUTH.lastName,
+                auth: AUTH,
+                logout,
+                login,
+            }}
         >
             {children}
         </LoginContext.Provider>
