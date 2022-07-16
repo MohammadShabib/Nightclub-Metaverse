@@ -32,6 +32,10 @@ const UserSchema = new mongoose.Schema({
         enum: ["Bronze", "Silver", "Gold", "Platinum"],
         default: "Bronze",
     },
+    points: {
+        type: Number,
+        default: 0,
+    },
     membershipStatus: {
         type: String,
         enum: ["Regular", "VIP"],

@@ -5,20 +5,24 @@ import { useLogin } from "../context/Login.Context";
 
 import "./Chat.css";
 const Chat = () => {
-    const [socket] = useState(() => io(":8000"));
+    const [socket] = useState(() => io("localhost:8000"));
     const [messages, setMessages] = useState([]);
     const [message, setMessage] = useState("");
     const [isSocket, setIsSocket] = useState(true);
     const messagesEndRef = useRef(null);
-    const { auth, firstName, lastName } = useLogin();
+    const { user, auth, firstName, lastName } = useLogin();
 
     const scrollToBottom = () => {
         messagesEndRef.current.scrollTop =
             messagesEndRef.current.scrollHeight + 500;
     };
     const FormSubmitHandler = () => {
+        const msg = message.trim();
+        if (msg.length === 0) return;
+
         const data = {
-            message: message,
+            user: user,
+            message: msg,
             firstName: firstName,
             lastName: lastName,
             time: new Date(),
@@ -68,12 +72,18 @@ const Chat = () => {
                                                         "1px solid rgba(255,255,255,.3)",
                                                 }}
                                             >
-                                                <p className="fw-bold mb-0">
+                                                <p
+                                                    className="fw-bold mb-0"
+                                                    style={{ color: "red" }}
+                                                >
                                                     Admin
                                                 </p>
                                             </div>
                                             <div className="card-body">
-                                                <p className="mb-0">s</p>
+                                                <p className="mb-0">
+                                                    Please, follow the rules &
+                                                    guidlines
+                                                </p>
                                             </div>
                                         </div>
                                     </li>
