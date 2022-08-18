@@ -1,0 +1,6 @@
+projectKey=NightClub
+serverUrl=http://localhost:9000
+serverVersion=9.6.0.59041
+dashboardUrl=http://localhost:9000/dashboard?id=NightClub
+ceTaskId=AYKnrnJ2YCjcLfhsClb_
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AYKnrnJ2YCjcLfhsClb_
