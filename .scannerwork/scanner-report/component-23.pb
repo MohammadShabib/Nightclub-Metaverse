@@ -1,1 +1,0 @@
- 2jsXžhr*client/src/components/atoms/Footer.Atom.js
