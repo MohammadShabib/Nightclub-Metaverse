@@ -11,7 +11,7 @@ describe("Post /api/user/register", () => {
             .then(() => done())
             .catch((err) => done(err));
     });
-    it("200, Should create new account", (done) => {
+    /*   it("200, Should create new account", (done) => {
         request(server)
             .post("/api/user/register")
             .send({
@@ -28,7 +28,7 @@ describe("Post /api/user/register", () => {
                 done();
             })
             .catch((err) => done(err));
-    });
+    }); */
 
     it("409-1100, Should fail, duplicate", (done) => {
         request(server)
@@ -36,8 +36,8 @@ describe("Post /api/user/register", () => {
             .send({
                 firstName: "test",
                 lastName: "test",
-                email: "test123@gfdgfd.com",
-                password: "12354351@",
+                email: "test@test.com",
+                password: "test@test.com",
             })
             .then((res) => {
                 const { body, status } = res;
