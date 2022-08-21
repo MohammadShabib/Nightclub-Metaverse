@@ -65,9 +65,8 @@ describe("Get api/user/:id", () => {
             request(server)
                 .get(`/api/user/1233`)
                 .then((res) => {
-                    let { STATUS } = res;
-
-                    expect(STATUS).to.equal(401);
+                    let { status } = res;
+                    expect(status).to.equal(401);
                     done();
                 })
                 .catch((err) => {

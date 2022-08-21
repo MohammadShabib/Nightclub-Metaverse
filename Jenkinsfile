@@ -8,6 +8,13 @@ pipeline {
             bat 'npm install --prefix ./client install ./client/'
         }
         }
+
+        stage('Test') {
+        steps {
+            echo 'Testing API\'s...'
+            bat 'npm --prefix ./server  test'
+        }
+        }
         
     }
 }
